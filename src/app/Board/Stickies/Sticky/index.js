@@ -8,7 +8,7 @@ const Sticky = () => (
       </div>
     </div>
     <div>
-      Chevechuvi Rondon es una bebe muy hermosa que es cariñosa y preciosa.
+      Chevechuvi Rondon es una bebe muy hermosa que es cariñosa y preciosa. Sisisi
     </div>
   </div>
 );
