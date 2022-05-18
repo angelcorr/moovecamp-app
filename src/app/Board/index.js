@@ -2,7 +2,7 @@ import Stickies from "./Stickies";
 import Toolbar from './Toolbar';
 
 const Board = () => (
-  <section className="h-screen m-1 flex flex-col justify-between">
+  <section className="h-screen flex flex-col justify-between border border-zinc-500 border-15 rounded-lg bg-slate-100">
     <Stickies />
     <Toolbar />
   </section>
