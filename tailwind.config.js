@@ -8,8 +8,11 @@ module.exports = {
         'sticky-background-login': "url('./assets/images/stickies-wallpaper.png')",
       },
       borderWidth: {
-        '15': '15px', 
-      }
+        '16': '16px',
+      },
+      minWidth: {
+        '200': '200px',
+      },
     },
   },
   plugins: [],
