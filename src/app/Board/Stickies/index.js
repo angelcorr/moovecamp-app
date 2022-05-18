@@ -9,9 +9,9 @@ const data = [
 
 const Stickies = () => {
   return (
-    <section className="flex flex-wrap">
+    <div className="flex flex-wrap">
       {data.map((sticky, key) => <Sticky id={key.key} title={sticky.title} text={sticky.text} />)}
-    </section>
+    </div>
   )
 };
 
