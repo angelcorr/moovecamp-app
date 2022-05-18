@@ -5,7 +5,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'sticky-background-login': "url('./assets/images/stickies-wallpaper.png')"
+        'sticky-background-login': "url('./assets/images/stickies-wallpaper.png')",
+      },
+      borderWidth: {
+        '15': '15px', 
       }
     },
   },
