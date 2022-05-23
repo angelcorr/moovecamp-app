@@ -34,9 +34,9 @@ export const singUpThunk = (newUser) => (dispatch, getState) => {
 
 export const logInThunk = (currentUser) => (_, getState) => {
   const users = selectUsers(getState());
-  const verifyUser = users.find((user) => user.email.toLowerCase !== currentUser.email.toLowerCase());
+  const verifyUser = users.some((user) => user.email.toLowerCase() === currentUser.email.toLowerCase() && user.password === currentUser.password);
 
-  if (verifyUser) return `This email does not exists. Please, sign up`;
+  if (!verifyUser) return `The email or password are incorrect.`;
 
 
   return true;
