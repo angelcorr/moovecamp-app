@@ -1,32 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const name = 'users';
+
+const saveState = (state) => localStorage.setItem('name', JSON.stringify(state));
+const loadInitialState = () => JSON.parse(localStorage.getItem(name)) || [];
+
 export const usersSlice = createSlice({
-  name: 'users',
-  initialState: [],
+  name,
+  initialState: loadInitialState(),
   reducers: {
     signUp: (state, action) => {
-      console.log('action', action);
-      return [...state, localStorage.setItem('user', JSON.stringify(action.payload))];
+      const newUser = action.payload;
+      const newState = [...state, newUser];
+      saveState(newState)
+      return newState;
     },
     logIn: (state, action) => {
-      return () => {
-        const currentUser = action.payload;
-        console.log('currentUser', currentUser);
-        const savedUser = localStorage.getItem('user');
-        console.log('savedUser', savedUser);
-        return;
-        // if (currentUser.email !== savedUser.email) {
-        //   return `We don't have any user register with that email. You must sign up`;
-        // }
-
-        // return [...state, action.payload];
-      }
+      return state;
     }
   }
 })
 
-export const { signUp } = usersSlice.actions;
+export const { signUp, logIn } = usersSlice.actions;
 
 export const selectUsers = (state) => state.users;
+
+export const singUpThunk = (newUser) => (dispatch, getState) => {
+  const users = selectUsers(getState());
+  const existingUser = users.find((user) => user.email.toLowerCase() === newUser.email.toLowerCase());
+  if (existingUser) return 'User already exists';
+
+  dispatch(signUp(newUser));
+  return true;
+}
 
 export default usersSlice.reducer;
