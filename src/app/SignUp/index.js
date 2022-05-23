@@ -13,8 +13,6 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const users = useSelector(selectUsers);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
