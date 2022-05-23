@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const name = 'users';
 
-const saveState = (state) => localStorage.setItem('name', JSON.stringify(state));
+const saveState = (state) => localStorage.setItem(name, JSON.stringify(state));
 const loadInitialState = () => JSON.parse(localStorage.getItem(name)) || [];
 
 export const usersSlice = createSlice({
@@ -15,9 +15,6 @@ export const usersSlice = createSlice({
       saveState(newState)
       return newState;
     },
-    logIn: (state, action) => {
-      return state;
-    }
   }
 })
 
@@ -28,9 +25,20 @@ export const selectUsers = (state) => state.users;
 export const singUpThunk = (newUser) => (dispatch, getState) => {
   const users = selectUsers(getState());
   const existingUser = users.find((user) => user.email.toLowerCase() === newUser.email.toLowerCase());
+
   if (existingUser) return 'User already exists';
 
   dispatch(signUp(newUser));
+  return true;
+}
+
+export const logInThunk = (currentUser) => (_, getState) => {
+  const users = selectUsers(getState());
+  const verifyUser = users.find((user) => user.email.toLowerCase !== currentUser.email.toLowerCase());
+
+  if (verifyUser) return `This email does not exists. Please, sign up`;
+
+
   return true;
 }
 
