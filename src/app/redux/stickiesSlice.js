@@ -21,7 +21,7 @@ export const stickiesSlice = createSlice({
     addSticky: (state, action) => {
       return {
         ...state,
-        stickies: [...state.stickies, { id: state.stickies.length + 1, title: action.payload.title, text: action.payload.text  }]
+        stickies: [...state.stickies, { id: state.stickies.length + state.deletedStickies.length + 1, title: action.payload.title, text: action.payload.text  }]
       };
     },
     removeSticky: (state, action) => {

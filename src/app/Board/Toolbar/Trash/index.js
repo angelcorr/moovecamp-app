@@ -9,8 +9,8 @@ const Trash = () => {
   return (
     <>
       {
-        currentState.length > 0 ? <img src={emptyTrash} alt="Trash can empty" /> : 
-        <img src={fullTrash} alt="Trash can full" /> 
+        currentState.deletedStickies.length > 0 ? <img src={fullTrash} alt="Trash can full" /> : 
+        <img src={emptyTrash} alt="Trash can empty" />
       }
     </>
   )
