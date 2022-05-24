@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
+const initialStickies = [
   { id: 1, title: 'nonel', text: "Chevechuvi" },
   { id: 2, title: 'yeska', text: "Chevechuvi es lo mas bello" },
   { id: 3, title: 'yeska', text: "Chevechuvi es lo mas bello de nuevo sisisis" },
@@ -13,13 +13,27 @@ const initialState = [
 //Top level state for Stickies
 export const stickiesSlice = createSlice({
   name: 'stickies',
-  initialState,
+  initialState: {
+    stickies: initialStickies,
+    deletedStickies: [],
+  },
   reducers: {
     addSticky: (state, action) => {
-      return [...state, { id: state.length + 1, title: action.payload.title, text: action.payload.text  }];
+      return {
+        ...state,
+        stickies: [...state.stickies, { id: state.length + 1, title: action.payload.title, text: action.payload.text  }]
+      };
     },
     removeSticky: (state, action) => {
-      return state.filter((sticky) => sticky.id !== action.payload.id).map((sticky, index) => ({ ...sticky, id: index + 1 }));
+      const stickyId = action.payload.id;
+      console.log('stickyId', stickyId);
+      const stickyToDelete = state.stickies.find((sticky) => sticky.id === stickyId);
+      console.log('stickyToDelete', stickyToDelete);
+      return  {
+        ...state,
+        stickies: state.stickies.filter((sticky) => sticky.id !== action.payload.id),
+        deletedStickies: [...state.deletedStickies, stickyToDelete]
+      };
     },
      changeColor: (state, action) => {
        console.log('action', action);
