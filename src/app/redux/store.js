@@ -5,6 +5,6 @@ import usersReducer from './usersSlice';
 export const store = configureStore({
   reducer: {
     stickies: stickiesReducer,
-    users: usersReducer
+    users: usersReducer,
   },
 });

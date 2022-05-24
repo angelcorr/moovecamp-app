@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { logInThunk } from "../redux/usersSlice";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { logInThunk } from '../redux/usersSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     navigate('/board');
-  }
+  };
 
   return (
     <section className="bg-sticky-background-login bg-cover bg-center">
@@ -49,17 +49,18 @@ const Login = () => {
             placeholder="Password"
           />
 
-          {errorMessage && <p className="text-rose-800">{ errorMessage }</p>}
-          <button
-            className="w-24 p-1 border border-purple-800 rounded-md"
-          >
-            Log In
-          </button>
-          <p className="text-xs">First time in Cheve Stickies? <Link to="/sign-up"><strong>Sign Up</strong></Link></p>
+          {errorMessage && <p className="text-rose-800">{errorMessage}</p>}
+          <button className="w-24 p-1 border border-purple-800 rounded-md">Log In</button>
+          <p className="text-xs">
+            First time in Cheve Stickies?{' '}
+            <Link to="/sign-up">
+              <strong>Sign Up</strong>
+            </Link>
+          </p>
         </form>
       </div>
     </section>
-  )
+  );
 };
 
 export default Login;

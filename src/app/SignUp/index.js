@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { singUpThunk } from "../redux/usersSlice";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { singUpThunk } from '../redux/usersSlice';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +9,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const SignUp = () => {
     }
 
     navigate('/board');
-  }
+  };
 
   return (
     <section className="bg-sticky-background-login bg-cover bg-center">
@@ -73,17 +73,18 @@ const SignUp = () => {
             onChange={(event) => setPasswordConfirmation(event.target.value)}
             placeholder="Confirm your Password"
           />
-          {errorMessage && <p className="text-rose-800">{ errorMessage }</p>}
-          <button
-            className="w-24 p-1 border border-purple-800 rounded-md"
-          >
-            Sign In
-          </button>
-          <p className="text-xs">Do you have an account? <Link to="/"><strong>Log In</strong></Link></p>
+          {errorMessage && <p className="text-rose-800">{errorMessage}</p>}
+          <button className="w-24 p-1 border border-purple-800 rounded-md">Sign In</button>
+          <p className="text-xs">
+            Do you have an account?{' '}
+            <Link to="/">
+              <strong>Log In</strong>
+            </Link>
+          </p>
         </form>
       </div>
     </section>
-  )
+  );
 };
 
 export default SignUp;

@@ -1,4 +1,4 @@
-import Stickies from "./Stickies";
+import Stickies from './Stickies';
 import Toolbar from './Toolbar';
 
 const Board = () => (

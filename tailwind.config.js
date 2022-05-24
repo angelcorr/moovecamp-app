@@ -1,19 +1,17 @@
 module.exports = {
-  content: [
-    './src/**/*.js'
-  ],
+  content: ['./src/**/*.js'],
   theme: {
     extend: {
       backgroundImage: {
         'sticky-background-login': "url('./assets/images/stickies-wallpaper.png')",
       },
       borderWidth: {
-        '16': '16px',
+        16: '16px',
       },
       minWidth: {
-        '200': '200px',
+        200: '200px',
       },
     },
   },
   plugins: [],
-}
+};

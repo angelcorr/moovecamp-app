@@ -1,5 +1,4 @@
-
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
 
 import Board from './app/Board';
@@ -14,6 +13,6 @@ const App = () => {
       <Route path="/board" element={<Board />} />
     </Routes>
   );
-}
+};
 
 export default App;
