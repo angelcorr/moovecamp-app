@@ -21,14 +21,12 @@ export const stickiesSlice = createSlice({
     addSticky: (state, action) => {
       return {
         ...state,
-        stickies: [...state.stickies, { id: state.length + 1, title: action.payload.title, text: action.payload.text  }]
+        stickies: [...state.stickies, { id: state.stickies.length + 1, title: action.payload.title, text: action.payload.text  }]
       };
     },
     removeSticky: (state, action) => {
       const stickyId = action.payload.id;
-      console.log('stickyId', stickyId);
       const stickyToDelete = state.stickies.find((sticky) => sticky.id === stickyId);
-      console.log('stickyToDelete', stickyToDelete);
       return  {
         ...state,
         stickies: state.stickies.filter((sticky) => sticky.id !== action.payload.id),
