@@ -5,12 +5,11 @@ import fullTrash from './trash-can/trash-can-full.png'
 
 const Trash = () => {
   const currentState = useSelector(selectStickies);
-  const isEmpty = false;
 
   return (
     <>
       {
-        !isEmpty ? <img src={emptyTrash} alt="Trash can empty" /> : 
+        currentState.length > 0 ? <img src={emptyTrash} alt="Trash can empty" /> : 
         <img src={fullTrash} alt="Trash can full" /> 
       }
     </>
