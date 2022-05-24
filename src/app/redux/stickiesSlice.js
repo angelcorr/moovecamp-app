@@ -19,9 +19,14 @@ export const stickiesSlice = createSlice({
   },
   reducers: {
     addSticky: (state, action) => {
+      const newSticky = { 
+        id: state.stickies.length + state.deletedStickies.length + 1,
+        title: action.payload.title,
+        text: action.payload.text,
+      };
       return {
         ...state,
-        stickies: [...state.stickies, { id: state.stickies.length + state.deletedStickies.length + 1, title: action.payload.title, text: action.payload.text  }]
+        stickies: [...state.stickies, newSticky]
       };
     },
     removeSticky: (state, action) => {
@@ -29,13 +34,19 @@ export const stickiesSlice = createSlice({
       const stickyToDelete = state.stickies.find((sticky) => sticky.id === stickyId);
       return  {
         ...state,
-        stickies: state.stickies.filter((sticky) => sticky.id !== action.payload.id),
+        stickies: state.stickies.filter((sticky) => sticky.id !== stickyId),
         deletedStickies: [...state.deletedStickies, stickyToDelete]
       };
     },
      changeColor: (state, action) => {
-       console.log('action', action);
-       return [...state, { className: action.payload.className }];
+      console.log('action', action);
+      return [...state, { className: action.payload.className }];
+     },
+     removeAllStickiesFromTrash: (state, action) => {
+      return {
+        ...state,
+        deletedStickies: []
+      };
      }
   }
 });
