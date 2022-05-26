@@ -52,10 +52,20 @@ export const stickiesSlice = createSlice({
         deletedStickies: [],
       };
     },
+    restoreASticky: (state, action) => {
+      const stickyId = action.payload.id;
+      const stickyToRestore = state.deletedStickies.find((sticky) => sticky.id === stickyId);
+      return {
+        ...state,
+        deletedStickies: state.deletedStickies.filter((sticky) => sticky.id !== stickyId),
+        stickies: [...state.stickies, stickyToRestore],
+      };
+    },
   },
 });
 
-export const { addSticky, removeSticky, changeColor } = stickiesSlice.actions;
+export const { addSticky, removeSticky, changeColor, removeAllStickiesFromTrash, restoreASticky } =
+  stickiesSlice.actions;
 
 export const selectStickies = (state) => state.stickies;
 

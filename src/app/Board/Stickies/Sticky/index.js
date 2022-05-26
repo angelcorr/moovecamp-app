@@ -1,7 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { removeSticky } from '../../../redux/stickiesSlice';
+import { removeSticky, restoreASticky } from '../../../redux/stickiesSlice';
 
-const Sticky = ({ title, text, id, handleContent }) => {
+const Sticky = ({
+  title,
+  text,
+  id,
+  handleContent,
+  isInsideTrash
+}) => {
   const dispatch = useDispatch();
 
   return (
@@ -12,7 +18,11 @@ const Sticky = ({ title, text, id, handleContent }) => {
         </p>
         <div className="w-10 flex justify-between">
           <button>•••</button>
-          <button onClick={() => dispatch(removeSticky({ id }))}>×</button>
+          {isInsideTrash ? (
+            <button onClick={() => dispatch(restoreASticky({ id }))}>×</button>
+          ) : (
+            <button onClick={() => dispatch(removeSticky({ id }))}>×</button>
+          ) }
         </div>
       </header>
       <div className="p-2" id={id} onClick={handleContent}>

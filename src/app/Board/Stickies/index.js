@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const Stickies = () => {
   const currentStickies = useSelector(selectStickies);
-  console.log('currentStickies', currentStickies);
   const handleContentText = (event) => {
     const elementId = event.target;
     elementId.setAttribute('contenteditable', 'true');
@@ -19,6 +18,7 @@ const Stickies = () => {
           title={sticky.title}
           text={sticky.text}
           handleContent={handleContentText}
+          isInsideTrash={false}
         />
       ))}
     </div>
