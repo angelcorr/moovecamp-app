@@ -30,8 +30,10 @@ export const stickiesSlice = createSlice({
       };
     },
     changeColor: (state, action) => {
-      console.log('action', action);
-      return [...state, { className: action.payload.className }];
+      return {
+        ...state,
+        stickies: state.stickies.map((sticky) => sticky.id === action.payload.id ? {...sticky, color: action.payload.color} : sticky)
+      }
     },
     removeAllStickiesFromTrash: (state, action) => {
       return {
