@@ -9,13 +9,15 @@ const AddSticky = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  const [color, setColor] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addSticky({ title, text }));
+    dispatch(addSticky({ title, text, color }));
     setModalVisible(false);
     setTitle('');
     setText('');
+    setColor('');
   };
 
   return (
@@ -45,13 +47,37 @@ const AddSticky = () => {
             value={text}
             onChange={(event) => setText(event.target.value)}
           />
-          <div className='flex flex-col items-center'>
+          <div className="flex flex-col items-center">
             Chose a color
             <div>
-              <button className="mt-3.5 mr-7 p-2 text-white bg-orange-700 border border-orange-700 rounded-lg">Orange</button>
-              <button className="mt-3.5 mr-7 p-2 text-white bg-pink-700 border border-pink-700 rounded-lg">Pink</button>
-              <button className="mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg">Purple</button>
-              <button className="mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg">Green</button>
+              <button
+                className="mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
+                value="orange"
+                onClick={(event) => setColor(event.target.value)}
+              >
+                Orange
+              </button>
+              <button
+                className="mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
+                value="blue"
+                onClick={(event) => setColor(event.target.value)}
+              >
+                Blue
+              </button>
+              <button
+                className="mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
+                value="purple"
+                onClick={(event) => setColor(event.target.value)}
+              >
+                Purple
+              </button>
+              <button
+                className="mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg"
+                value="green"
+                onClick={(event) => setColor(event.target.value)}
+              >
+                Green
+              </button>
             </div>
           </div>
           <button className="w-1/6 h-8 text-white bg-green-600 border border-green-600 rounded-md">

@@ -13,6 +13,7 @@ export const stickiesSlice = createSlice({
         id: state.stickies.length + state.deletedStickies.length + 1,
         title: action.payload.title,
         text: action.payload.text,
+        color: action.payload.color,
       };
       return {
         ...state,

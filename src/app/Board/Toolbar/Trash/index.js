@@ -39,6 +39,7 @@ const Trash = () => {
                 id={sticky.id}
                 title={sticky.title}
                 text={sticky.text}
+                color={sticky.color}
                 isInsideTrash={true}
               />
             ))

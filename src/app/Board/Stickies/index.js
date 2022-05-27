@@ -17,6 +17,7 @@ const Stickies = () => {
           id={sticky.id}
           title={sticky.title}
           text={sticky.text}
+          color={sticky.color}
           handleContent={handleContentText}
           isInsideTrash={false}
         />
