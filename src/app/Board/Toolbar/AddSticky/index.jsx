@@ -36,17 +36,17 @@ const AddSticky = () => {
       </div>
       <Modal title="New sticky" visible={modalVisible} setVisible={setModalVisible}>
         <form
-          className="h-full flex flex-col justify-evenly items-center"
+          className="h-5/6 flex flex-col justify-around items-center"
           onSubmit={(event) => handleSubmit(event)}
         >
           <input
-            className="w-9/12 h-9 p-2 placeholder:text-black//25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
+            className="w-9/12 h-9 p-2 placeholder:text-black/25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
             placeholder="Add a title"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
           <textarea
-            className="w-9/12 h-24 p-2 placeholder:text-black//25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
+            className="w-9/12 h-24 p-2 placeholder:text-black/25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
             placeholder="Add a text"
             value={text}
             onChange={(event) => setText(event.target.value)}
@@ -56,7 +56,7 @@ const AddSticky = () => {
             <div>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
+                className="mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
                 value="orange"
                 onClick={(event) => setColor(event.target.value)}
               >
@@ -64,7 +64,7 @@ const AddSticky = () => {
               </button>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
+                className="mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
                 value="blue"
                 onClick={(event) => setColor(event.target.value)}
               >
@@ -72,7 +72,7 @@ const AddSticky = () => {
               </button>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
+                className="mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
                 value="purple"
                 onClick={(event) => setColor(event.target.value)}
               >
@@ -80,7 +80,7 @@ const AddSticky = () => {
               </button>
               <button
                 type="button"
-                className="mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg"
+                className="p-2 text-white bg-green-700 border border-green-700 rounded-lg"
                 value="green"
                 onClick={(event) => setColor(event.target.value)}
               >
@@ -93,7 +93,7 @@ const AddSticky = () => {
             <div>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
+                className="mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
                 value="sansSerif"
                 onClick={(event) => setFont(event.target.value)}
               >
@@ -101,7 +101,7 @@ const AddSticky = () => {
               </button>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
+                className="mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
                 value="serif"
                 onClick={(event) => setFont(event.target.value)}
               >
@@ -109,7 +109,7 @@ const AddSticky = () => {
               </button>
               <button
                 type="button"
-                className="mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
+                className="p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
                 value="monospace"
                 onClick={(event) => setFont(event.target.value)}
               >
