@@ -14,6 +14,7 @@ export const stickiesSlice = createSlice({
         title: action.payload.title,
         text: action.payload.text,
         color: action.payload.color,
+        font: action.payload.font,
       };
       return {
         ...state,
@@ -32,8 +33,19 @@ export const stickiesSlice = createSlice({
     changeColor: (state, action) => {
       return {
         ...state,
-        stickies: state.stickies.map((sticky) => sticky.id === action.payload.id ? {...sticky, color: action.payload.color} : sticky)
-      }
+        stickies: state.stickies.map((sticky) =>
+          sticky.id === action.payload.id ? { ...sticky, color: action.payload.color } : sticky
+        ),
+      };
+    },
+    changeTextFont: (state, action) => {
+      console.log('action', action);
+      return {
+        ...state,
+        stickies: state.stickies.map((sticky) =>
+          sticky.id === action.payload.id ? { ...sticky, font: action.payload.font } : sticky
+        ),
+      };
     },
     removeAllStickiesFromTrash: (state, action) => {
       return {
@@ -53,8 +65,14 @@ export const stickiesSlice = createSlice({
   },
 });
 
-export const { addSticky, removeSticky, changeColor, removeAllStickiesFromTrash, restoreASticky } =
-  stickiesSlice.actions;
+export const {
+  addSticky,
+  removeSticky,
+  changeColor,
+  removeAllStickiesFromTrash,
+  restoreASticky,
+  changeTextFont,
+} = stickiesSlice.actions;
 
 export const selectStickies = (state) => state.stickies;
 
