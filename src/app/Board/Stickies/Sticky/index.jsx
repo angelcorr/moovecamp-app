@@ -35,16 +35,18 @@ const Sticky = ({
   const fontClassName = fontFamilyAvailable[font || 'sans-serif'];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [backgroundColor, setBackgroundCColor] = useState('yellow');
-  const [selectFontFamily, setSelectFontFamily] = useState('sansSerif');
+  const [backgroundColor, setBackgroundCColor] = useState(color);
+  const [selectFontFamily, setSelectFontFamily] = useState(font);
+
+  const handleContentText = (event) => {
+    const elementId = event.target;
+    elementId.setAttribute('contenteditable', 'true');
+  };
 
   const handleChangeSticky = () => {
-    const colorSelected = backgroundColor;
-    const fontSelected = selectFontFamily;
-    dispatch(changeTextFont({ id, fontSelected }));
-    dispatch(changeColor({ id, colorSelected }));
+    dispatch(changeTextFont({ id, font: selectFontFamily }));
+    dispatch(changeColor({ id, color: backgroundColor }));
 
-    setBackgroundCColor('');
     setModalVisible(false);
   };
 

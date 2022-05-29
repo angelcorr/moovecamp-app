@@ -5,10 +5,6 @@ import { selectStickies } from '../../redux/stickiesSlice';
 
 const Stickies = () => {
   const currentStickies = useSelector(selectStickies);
-  const handleContentText = (event) => {
-    const elementId = event.target;
-    elementId.setAttribute('contenteditable', 'true');
-  };
 
   return (
     <div className="flex flex-wrap">
@@ -20,7 +16,6 @@ const Stickies = () => {
           text={sticky.text}
           color={sticky.color}
           font={sticky.font}
-          handleContent={handleContentText}
           isInsideTrash={false}
         />
       ))}
