@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAllStickiesFromTrash, selectStickies } from '../../../redux/stickiesSlice';
 import Modal from '../../Modal';
@@ -20,11 +20,11 @@ const Trash = () => {
   return (
     <>
       {currentState.deletedStickies.length > 0 ? (
-        <button onClick={() => setModalVisible(true)}>
+        <button type="button" onClick={() => setModalVisible(true)}>
           <img className="h-14" src={fullTrash} alt="Trash can full" />
         </button>
       ) : (
-        <button onClick={() => setModalVisible(true)}>
+        <button type="button" onClick={() => setModalVisible(true)}>
           <img className="h-14" src={emptyTrash} alt="Trash can empty" />
         </button>
       )}
@@ -40,13 +40,14 @@ const Trash = () => {
                 title={sticky.title}
                 text={sticky.text}
                 color={sticky.color}
-                isInsideTrash={true}
+                isInsideTrash
               />
             ))
           )}
         </div>
         <footer className="mt-3.5 flex justify-evenly">
           <button
+            type="button"
             className="w-3/12 p-2 border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
             onClick={() => setModalVisible(false)}
           >
@@ -54,6 +55,7 @@ const Trash = () => {
           </button>
           {currentState.deletedStickies.length > 0 && (
             <button
+              type="button"
               className="w-3/12 p-2 border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
               onClick={() => handleEmptyTrash()}
             >

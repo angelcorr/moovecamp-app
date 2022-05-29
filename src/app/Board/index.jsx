@@ -1,3 +1,4 @@
+import React from 'react';
 import Stickies from './Stickies';
 import Toolbar from './Toolbar';
 

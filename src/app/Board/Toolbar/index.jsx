@@ -1,3 +1,4 @@
+import React from 'react';
 import AddSticky from './AddSticky';
 import Trash from './Trash';
 

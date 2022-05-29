@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { singUpThunk } from '../redux/usersSlice';
+import { logInThunk } from '../redux/usersSlice';
 
-const SignUp = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
-  const [emailConfirmation, setEmailConfirmation] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
@@ -16,18 +15,8 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (email !== emailConfirmation) {
-      setErrorMessage(`Email doesn't match`);
-      return;
-    }
-
-    if (password !== passwordConfirmation) {
-      setErrorMessage(`Password doesn't match`);
-      return;
-    }
-
-    const newUser = { email, password };
-    const thunkResponse = dispatch(singUpThunk(newUser));
+    const currentUser = { email, password };
+    const thunkResponse = dispatch(logInThunk(currentUser));
 
     if (typeof thunkResponse === 'string') {
       setErrorMessage(thunkResponse);
@@ -44,7 +33,7 @@ const SignUp = () => {
           className="w-64 md:w-80 lg:w-96 h-96 flex flex-col justify-evenly items-center border border-purple-800 rounded-md"
           onSubmit={(event) => handleSubmit(event)}
         >
-          <p className="text-2xl">Sign Up</p>
+          <p className="text-2xl lg:text-3xl">Log In</p>
           <input
             className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
             type="email"
@@ -54,31 +43,19 @@ const SignUp = () => {
           />
           <input
             className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
-            type="email"
-            value={emailConfirmation}
-            onChange={(event) => setEmailConfirmation(event.target.value)}
-            placeholder="Confirm your email"
-          />
-          <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
           />
-          <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
-            type="password"
-            value={passwordConfirmation}
-            onChange={(event) => setPasswordConfirmation(event.target.value)}
-            placeholder="Confirm your Password"
-          />
+
           {errorMessage && <p className="text-rose-800">{errorMessage}</p>}
-          <button className="w-24 p-1 border border-purple-800 rounded-md">Sign In</button>
+          <button type="submit" className="w-24 p-1 border border-purple-800 rounded-md">Log In</button>
           <p className="text-xs">
-            Do you have an account?{' '}
-            <Link to="/">
-              <strong>Log In</strong>
+            First time in Cheve Stickies?
+            {' '}
+            <Link to="/sign-up">
+              <strong>Sign Up</strong>
             </Link>
           </p>
         </form>
@@ -87,4 +64,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

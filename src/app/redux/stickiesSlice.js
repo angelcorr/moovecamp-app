@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-//Top level state for Stickies
+// Top level state for Stickies
 export const stickiesSlice = createSlice({
   name: 'stickies',
   initialState: {
@@ -30,29 +30,22 @@ export const stickiesSlice = createSlice({
         deletedStickies: [...state.deletedStickies, stickyToDelete],
       };
     },
-    changeColor: (state, action) => {
-      return {
-        ...state,
-        stickies: state.stickies.map((sticky) =>
-          sticky.id === action.payload.id ? { ...sticky, color: action.payload.color } : sticky
-        ),
-      };
-    },
-    changeTextFont: (state, action) => {
-      console.log('action', action);
-      return {
-        ...state,
-        stickies: state.stickies.map((sticky) =>
-          sticky.id === action.payload.id ? { ...sticky, font: action.payload.font } : sticky
-        ),
-      };
-    },
-    removeAllStickiesFromTrash: (state, action) => {
-      return {
-        ...state,
-        deletedStickies: [],
-      };
-    },
+    changeColor: (state, action) => ({
+      ...state,
+      stickies: state.stickies.map((sticky) => (
+        sticky.id === action.payload.id ? { ...sticky, color: action.payload.color } : sticky
+      )),
+    }),
+    changeTextFont: (state, action) => ({
+      ...state,
+      stickies: state.stickies.map((sticky) => (
+        sticky.id === action.payload.id ? { ...sticky, font: action.payload.font } : sticky
+      )),
+    }),
+    removeAllStickiesFromTrash: (state) => ({
+      ...state,
+      deletedStickies: [],
+    }),
     restoreASticky: (state, action) => {
       const stickyId = action.payload.id;
       const stickyToRestore = state.deletedStickies.find((sticky) => sticky.id === stickyId);

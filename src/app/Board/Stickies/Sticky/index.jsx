@@ -1,12 +1,16 @@
-import { useState } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   changeColor,
   changeTextFont,
   removeSticky,
   restoreASticky,
 } from '../../../redux/stickiesSlice';
-import Modal from '../../Modal/';
+import Modal from '../../Modal';
 
 const colors = {
   blue: 'bg-blue-300 border-blue-700',
@@ -22,22 +26,23 @@ const fontFamilyAvailable = {
   monospace: 'font-mono',
 };
 
-const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) => {
+const Sticky = ({
+  title, text, id, color, font, handleContent, isInsideTrash,
+}) => {
   const dispatch = useDispatch();
 
   const colorsClassName = colors[color || 'yellow'];
   const fontClassName = fontFamilyAvailable[font || 'sans-serif'];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [backgroundColor, setBackgroundCColor] = useState('');
-  const [selectFontFamily, setSelectFontFamily] = useState('');
+  const [backgroundColor, setBackgroundCColor] = useState('yellow');
+  const [selectFontFamily, setSelectFontFamily] = useState('sansSerif');
 
   const handleChangeSticky = () => {
-    const color = backgroundColor;
-    const font = selectFontFamily;
-    dispatch(changeTextFont({ id, font }));
-    dispatch(changeColor({ id, color }));
-
+    const colorSelected = backgroundColor;
+    const fontSelected = selectFontFamily;
+    dispatch(changeTextFont({ id, fontSelected }));
+    dispatch(changeColor({ id, colorSelected }));
 
     setBackgroundCColor('');
     setModalVisible(false);
@@ -53,11 +58,17 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
             {title}
           </p>
           <div className="w-10 flex justify-between">
-            <button onClick={() => setModalVisible(true)}>•••</button>
+            <button type="button" onClick={() => setModalVisible(true)}>
+              •••
+            </button>
             {isInsideTrash ? (
-              <button onClick={() => dispatch(restoreASticky({ id }))}>×</button>
+              <button type="button" onClick={() => dispatch(restoreASticky({ id }))}>
+                ×
+              </button>
             ) : (
-              <button onClick={() => dispatch(removeSticky({ id }))}>×</button>
+              <button type="button" onClick={() => dispatch(removeSticky({ id }))}>
+                ×
+              </button>
             )}
           </div>
         </header>
@@ -67,9 +78,10 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
       </div>
       <Modal title="Sticky's settings" visible={modalVisible} setVisible={setModalVisible}>
         <div className="h-full flex flex-col justify-evenly items-center">
-          <p>Change sticky's background color</p>
+          <p>Change sticky`s background color</p>
           <div>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg"
               value="orange"
               onClick={(event) => setBackgroundCColor(event.target.value)}
@@ -77,6 +89,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
               Orange
             </button>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg"
               value="blue"
               onClick={(event) => setBackgroundCColor(event.target.value)}
@@ -84,6 +97,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
               Blue
             </button>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg"
               value="purple"
               onClick={(event) => setBackgroundCColor(event.target.value)}
@@ -91,6 +105,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
               Purple
             </button>
             <button
+              type="button"
               className="mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg"
               value="green"
               onClick={(event) => setBackgroundCColor(event.target.value)}
@@ -101,6 +116,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
           <p>Change typography</p>
           <div>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans"
               value="sansSerif"
               onClick={(event) => setSelectFontFamily(event.target.value)}
@@ -108,6 +124,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
               Default
             </button>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-serif"
               value="serif"
               onClick={(event) => setSelectFontFamily(event.target.value)}
@@ -115,6 +132,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
               Times New Roman
             </button>
             <button
+              type="button"
               className="mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-mono"
               value="monospace"
               onClick={(event) => setSelectFontFamily(event.target.value)}
@@ -123,6 +141,7 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
             </button>
           </div>
           <button
+            type="button"
             className="w-1/6 h-8 text-white bg-green-600 border border-green-600 rounded-md transition ease-in-out delay-150 hover:scale-125 duration-300"
             onClick={() => handleChangeSticky()}
           >
@@ -132,6 +151,16 @@ const Sticky = ({ title, text, id, color, font, handleContent, isInsideTrash }) 
       </Modal>
     </>
   );
+};
+
+Sticky.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  font: PropTypes.string.isRequired,
+  handleContent: PropTypes.func.isRequired,
+  isInsideTrash: PropTypes.bool.isRequired,
 };
 
 export default Sticky;

@@ -1,6 +1,7 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Sticky from './Sticky';
 import { selectStickies } from '../../redux/stickiesSlice';
-import { useSelector } from 'react-redux';
 
 const Stickies = () => {
   const currentStickies = useSelector(selectStickies);
