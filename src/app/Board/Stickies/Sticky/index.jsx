@@ -27,7 +27,7 @@ const fontFamilyAvailable = {
 };
 
 const Sticky = ({
-  title, text, id, color, font, handleContent, isInsideTrash,
+  title, text, id, color, font, isInsideTrash,
 }) => {
   const dispatch = useDispatch();
 
@@ -56,25 +56,27 @@ const Sticky = ({
         <header
           className={`flex justify-between p-2 border border-b-2 rounded-t-md ${colorsClassName}`}
         >
-          <p className="w-auto" id={id} onClick={handleContent}>
+          <p className="w-auto" id={id} onClick={() => handleContentText()}>
             {title}
           </p>
-          <div className="w-10 flex justify-between">
-            <button type="button" onClick={() => setModalVisible(true)}>
-              •••
-            </button>
+          <div className="flex justify-between">
             {isInsideTrash ? (
               <button type="button" onClick={() => dispatch(restoreASticky({ id }))}>
                 ×
               </button>
             ) : (
-              <button type="button" onClick={() => dispatch(removeSticky({ id }))}>
-                ×
-              </button>
+              <>
+                <button className="mr-1" type="button" onClick={() => setModalVisible(true)}>
+                  •••
+                </button>
+                <button type="button" onClick={() => dispatch(removeSticky({ id }))}>
+                  ×
+                </button>
+              </>
             )}
           </div>
         </header>
-        <div className={`p-2 ${fontClassName}`} id={id} onClick={handleContent}>
+        <div className={`p-2 ${fontClassName}`} id={id} onClick={() => handleContentText()}>
           {text}
         </div>
       </div>
