@@ -161,7 +161,6 @@ Sticky.propTypes = {
   id: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   font: PropTypes.string.isRequired,
-  handleContent: PropTypes.func.isRequired,
   isInsideTrash: PropTypes.bool.isRequired,
 };
 
