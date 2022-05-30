@@ -29,7 +29,7 @@ const Trash = () => {
         </button>
       )}
       <Modal title="Trash can" visible={modalVisible} setVisible={setModalVisible}>
-        <div className="h-4/5 overflow-auto flex flex-col items-center">
+        <div className="h-4/5 md:w-full overflow-auto flex flex-col items-center">
           {currentState.deletedStickies.length <= 0 ? (
             <p className="w-full p-4 flex justify-center">The trash is empty</p>
           ) : (
