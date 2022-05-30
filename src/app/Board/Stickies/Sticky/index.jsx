@@ -1,12 +1,11 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { React, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   changeColor,
+  changeText,
   changeTextFont,
+  changeTitle,
   removeSticky,
   restoreASticky,
 } from '../../../redux/stickiesSlice';
@@ -38,11 +37,6 @@ const Sticky = ({
   const [backgroundColor, setBackgroundCColor] = useState(color);
   const [selectFontFamily, setSelectFontFamily] = useState(font);
 
-  const handleContentText = (event) => {
-    const elementId = event.target;
-    elementId.setAttribute('contenteditable', 'true');
-  };
-
   const handleChangeSticky = () => {
     dispatch(changeTextFont({ id, font: selectFontFamily }));
     dispatch(changeColor({ id, color: backgroundColor }));
@@ -50,13 +44,29 @@ const Sticky = ({
     setModalVisible(false);
   };
 
+  const handleText = ({ currentTarget }) => {
+    const currentText = currentTarget.textContent;
+    dispatch(changeText({ id, text: currentText }));
+  };
+
+  const handleTitle = ({ currentTarget }) => {
+    const currentText = currentTarget.textContent;
+    dispatch(changeTitle({ id, title: currentText }));
+  };
+
   return (
     <>
-      <div className={`w-96 m-2 border rounded-md ${colorsClassName}`} id={id}>
+      <div className={`w-full m-2 md:w-5/12 border rounded-md ${colorsClassName}`} id={id}>
         <header
           className={`flex justify-between p-2 border border-b-2 rounded-t-md ${colorsClassName}`}
         >
-          <p className="w-auto" id={id} onClick={() => handleContentText()}>
+          <p
+            className="w-auto"
+            id={id}
+            contentEditable="true"
+            suppressContentEditableWarning="true"
+            onBlur={(event) => handleTitle(event)}
+          >
             {title}
           </p>
           <div className="flex justify-between">
@@ -76,7 +86,13 @@ const Sticky = ({
             )}
           </div>
         </header>
-        <div className={`p-2 ${fontClassName}`} id={id} onClick={() => handleContentText()}>
+        <div
+          className={`p-2 ${fontClassName}`}
+          id={id}
+          contentEditable="true"
+          suppressContentEditableWarning="true"
+          onBlur={(event) => handleText(event)}
+        >
           {text}
         </div>
       </div>

@@ -30,6 +30,18 @@ export const stickiesSlice = createSlice({
         deletedStickies: [...state.deletedStickies, stickyToDelete],
       };
     },
+    changeTitle: (state, action) => ({
+      ...state,
+      stickies: state.stickies.map((sticky) => (
+        sticky.id === action.payload.id ? { ...sticky, title: action.payload.title } : sticky
+      )),
+    }),
+    changeText: (state, action) => ({
+      ...state,
+      stickies: state.stickies.map((sticky) => (
+        sticky.id === action.payload.id ? { ...sticky, text: action.payload.text } : sticky
+      )),
+    }),
     changeColor: (state, action) => ({
       ...state,
       stickies: state.stickies.map((sticky) => (
@@ -61,6 +73,8 @@ export const stickiesSlice = createSlice({
 export const {
   addSticky,
   removeSticky,
+  changeTitle,
+  changeText,
   changeColor,
   removeAllStickiesFromTrash,
   restoreASticky,
