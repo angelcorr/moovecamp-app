@@ -29,7 +29,7 @@ const Trash = () => {
         </button>
       )}
       <Modal title="Trash can" visible={modalVisible} setVisible={setModalVisible}>
-        <div className="h-4/6 overflow-auto flex flex-col items-center">
+        <div className="h-4/5 overflow-auto flex flex-col items-center">
           {currentState.deletedStickies.length <= 0 ? (
             <p className="w-full p-4 flex justify-center">The trash is empty</p>
           ) : (
@@ -46,10 +46,10 @@ const Trash = () => {
             ))
           )}
         </div>
-        <footer className="mt-3.5 flex justify-evenly">
+        <footer className="sticky my-2 flex justify-evenly">
           <button
             type="button"
-            className="w-3/12 p-2 border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
+            className="w-4/12 p-2 text-sm border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
             onClick={() => setModalVisible(false)}
           >
             Cancel
@@ -57,7 +57,7 @@ const Trash = () => {
           {currentState.deletedStickies.length > 0 && (
             <button
               type="button"
-              className="w-3/12 p-2 border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
+              className="w-4/12 p-2 text-sm border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
               onClick={() => handleEmptyTrash()}
             >
               Empty Trash
