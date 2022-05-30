@@ -7,7 +7,7 @@ const Stickies = () => {
   const currentStickies = useSelector(selectStickies);
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap md:justify-center">
       {currentStickies.stickies.map((sticky) => (
         <Sticky
           key={sticky.id}
