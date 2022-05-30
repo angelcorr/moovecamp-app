@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Modal = ({
   title, children, visible, setVisible,
 }) => visible && (
-  <div className="w-6/12 h-5/6 fixed top-16 left-1/4 flex justify-center items-center rounded-md bg-slate-100 border border-2 border-zinc-500 p-4">
+  <div className="w-10/12 md:w-6/12 h-5/6 fixed top-16 md:left-1/4 flex justify-center items-center rounded-md bg-slate-100 border border-2 border-zinc-500 p-4">
     <span className="Modal-backdrop" />
     <div className="w-full h-full">
       <div className="p-3 flex justify-between border border-b-zinc-400">
