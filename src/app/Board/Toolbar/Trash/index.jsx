@@ -20,11 +20,11 @@ const Trash = () => {
   return (
     <>
       {currentState.deletedStickies.length > 0 ? (
-        <button type="button" onClick={() => setModalVisible(true)}>
+        <button className="mx-2.5" type="button" onClick={() => setModalVisible(true)}>
           <img className="h-14" src={fullTrash} alt="Trash can full" />
         </button>
       ) : (
-        <button type="button" onClick={() => setModalVisible(true)}>
+        <button className="mx-2.5" type="button" onClick={() => setModalVisible(true)}>
           <img className="h-14" src={emptyTrash} alt="Trash can empty" />
         </button>
       )}

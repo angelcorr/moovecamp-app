@@ -29,7 +29,7 @@ const AddSticky = () => {
         <button
           type="button"
           onClick={() => setModalVisible(true)}
-          className="w-10 h-10 bg-gray-100 text-gray-700 border border-gray-300 rounded-full transition ease-in-out delay-150 hover:scale-125 duration-300"
+          className="w-10 h-10 mx-2.5 bg-gray-100 text-gray-700 border border-gray-300 rounded-full transition ease-in-out delay-150 hover:scale-125 duration-300"
         >
           +
         </button>
