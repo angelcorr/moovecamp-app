@@ -20,7 +20,7 @@ export const usersSlice = createSlice({
     },
     logIn: (state, action) => {
       const newUserLoggedIn = action.payload;
-      const newState = { ...state, userLoggedIn: newUserLoggedIn };
+      const newState = { ...state, userLoggedIn: newUserLoggedIn.email };
       saveState(newState);
       return newState;
     },
