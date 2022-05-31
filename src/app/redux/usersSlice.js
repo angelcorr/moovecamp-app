@@ -24,13 +24,20 @@ export const usersSlice = createSlice({
       saveState(newState);
       return newState;
     },
+    signOut: (state) => {
+      const newState = { ...state, userLoggedIn: null };
+      saveState(newState);
+      return newState;
+    },
   },
 });
 
-export const { signUp, logIn } = usersSlice.actions;
+export const { signUp, logIn, signOut } = usersSlice.actions;
 
 export const selectUsers = (state) => state.users.users;
 export const selectUserLoggedIn = (state) => state.users.userLoggedIn;
+
+// Thunks
 
 export const singUpThunk = (newUser) => (dispatch, getState) => {
   const users = selectUsers(getState());
