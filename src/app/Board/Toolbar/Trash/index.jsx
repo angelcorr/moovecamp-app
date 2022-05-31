@@ -4,7 +4,7 @@ import { removeAllStickiesFromTrash, selectStickies } from '../../../redux/stick
 import Modal from '../../Modal';
 import emptyTrash from './trash-can/trash-can-empty.png';
 import fullTrash from './trash-can/trash-can-full.png';
-import TrashModal from './TrashModal';
+import TrashModal from './TrashModal/TrashModal';
 
 const Trash = () => {
   const currentState = useSelector(selectStickies);
