@@ -49,7 +49,7 @@ const Login = () => {
             placeholder="Password"
           />
 
-          {errorMessage && <p className="text-rose-800">{errorMessage}</p>}
+          {errorMessage && <p className="text-center text-rose-800">{errorMessage}</p>}
           <button type="submit" className="w-24 p-1 border border-purple-800 rounded-md">Log In</button>
           <p className="text-xs">
             First time in Cheve Stickies?
