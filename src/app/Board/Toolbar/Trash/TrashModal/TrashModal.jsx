@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { selectStickies } from '../../../redux/stickiesSlice';
-import Sticky from '../../Stickies/Sticky';
+import { selectStickies } from '../../../../redux/stickiesSlice';
+import Sticky from '../../../Stickies/Sticky';
 
 const TrashModal = ({ handleTrash, setVisible }) => {
   const currentState = useSelector(selectStickies);
