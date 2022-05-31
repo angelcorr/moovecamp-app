@@ -53,13 +53,12 @@ export const singUpThunk = (newUser) => (dispatch, getState) => {
 
 export const logInThunk = ({ email, password }) => (dispatch, getState) => {
   const users = selectUsers(getState());
-  const verifyEmailUser = users.find(
-    (user) => user.email.toLowerCase() === email.toLowerCase(),
+  const verifyUser = users.find(
+    (user) => user.email.toLowerCase() === email.toLowerCase()
+    && user.password === password,
   );
 
-  const verifyPasswordUser = users.find((user) => user.password === password);
-
-  if (!verifyEmailUser || !verifyPasswordUser) return 'The email or password are incorrect.';
+  if (!verifyUser) return 'The email or password are incorrect.';
 
   dispatch(logIn(verifyUser));
 
