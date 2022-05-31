@@ -50,7 +50,7 @@ const TrashModal = ({ handleTrash, setVisible }) => {
 
 TrashModal.propTypes = {
   handleTrash: PropTypes.func.isRequired,
-  setVisible: PropTypes.bool.isRequired,
+  setVisible: PropTypes.func.isRequired,
 };
 
 export default TrashModal;
