@@ -73,7 +73,7 @@ const SignUp = () => {
             onChange={(event) => setPasswordConfirmation(event.target.value)}
             placeholder="Confirm your Password"
           />
-          {errorMessage && <p className="text-rose-800">{errorMessage}</p>}
+          {errorMessage && <p className="text-center text-rose-800">{errorMessage}</p>}
           <button type="submit" className="w-24 p-1 border border-purple-800 rounded-md">Sign In</button>
           <p className="text-xs">
             Do you have an account?
