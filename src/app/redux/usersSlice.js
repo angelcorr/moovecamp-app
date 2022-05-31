@@ -4,7 +4,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const name = 'users';
 
 const saveState = (state) => localStorage.setItem(name, JSON.stringify(state));
-const loadInitialState = () => JSON.parse(localStorage.getItem(name)) || [];
+const loadInitialState = () => (
+  JSON.parse(localStorage.getItem(name)) || { users: [], userLoggedIn: null }
+);
 
 export const usersSlice = createSlice({
   name,
@@ -12,7 +14,13 @@ export const usersSlice = createSlice({
   reducers: {
     signUp: (state, action) => {
       const newUser = action.payload;
-      const newState = [...state, newUser];
+      const newState = { ...state, users: [...state.users, newUser], userLoggedIn: newUser.email };
+      saveState(newState);
+      return newState;
+    },
+    logIn: (state, action) => {
+      const newUserLoggedIn = action.payload;
+      const newState = { ...state, userLoggedIn: newUserLoggedIn };
       saveState(newState);
       return newState;
     },
@@ -21,7 +29,8 @@ export const usersSlice = createSlice({
 
 export const { signUp, logIn } = usersSlice.actions;
 
-export const selectUsers = (state) => state.users;
+export const selectUsers = (state) => state.users.users;
+export const selectUserLoggedIn = (state) => state.users.userLoggedIn;
 
 export const singUpThunk = (newUser) => (dispatch, getState) => {
   const users = selectUsers(getState());
@@ -35,14 +44,17 @@ export const singUpThunk = (newUser) => (dispatch, getState) => {
   return true;
 };
 
-export const logInThunk = (currentUser) => (_, getState) => {
+export const logInThunk = ({ email, password }) => (dispatch, getState) => {
   const users = selectUsers(getState());
-  const verifyUser = users.some(
-    (user) => user.email.toLowerCase() === currentUser.email.toLowerCase()
-      && user.password === currentUser.password,
+  const verifyEmailUser = users.find(
+    (user) => user.email.toLowerCase() === email.toLowerCase(),
   );
 
-  if (!verifyUser) return 'The email or password are incorrect.';
+  const verifyPasswordUser = users.find((user) => user.password === password);
+
+  if (!verifyEmailUser || !verifyPasswordUser) return 'The email or password are incorrect.';
+
+  dispatch(logIn(verifyUser));
 
   return true;
 };
