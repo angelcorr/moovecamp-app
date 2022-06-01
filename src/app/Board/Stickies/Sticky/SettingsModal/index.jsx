@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SettingsModal = ({ setBackgroundCColor, setSelectFontFamily, handleChangeSticky }) => (
-  <div className="h-full flex flex-col justify-evenly items-center">
+  <div className="h-5/6 flex flex-col justify-evenly items-center">
     <p>Change sticky`s background color</p>
     <div>
       <button
