@@ -17,9 +17,7 @@ export const stickiesSlice = createSlice({
   initialState: loadInitialState(),
   reducers: {
     addSticky: (state, action) => {
-      console.log('state', state);
       const userStickies = state[action.payload.email] || userInitialState;
-      console.log('state[action.payload.email]', userStickies);
       const newSticky = {
         id: userStickies.stickies.length
         + userStickies.deletedStickies.length
@@ -40,12 +38,30 @@ export const stickiesSlice = createSlice({
     removeSticky: (state, action) => {
       const stickyId = action.payload.id;
       const stickyToDelete = (
-        state[action.payload.email].stickies.find((sticky) => sticky.id === stickyId));
+        state[action.payload.email].stickies.find((sticky) => sticky.id === stickyId)
+      );
       const newState = {
         ...state,
         [action.payload.email]: {
           stickies: state[action.payload.email].stickies.filter((sticky) => sticky.id !== stickyId),
           deletedStickies: [...state[action.payload.email].deletedStickies, stickyToDelete],
+        },
+      };
+      saveState(newState);
+      return newState;
+    },
+    restoreASticky: (state, action) => {
+      const stickyId = action.payload.id;
+      const stickyToRestore = (
+        state[action.payload.email].deletedStickies.find((sticky) => sticky.id === stickyId)
+      );
+      const newState = {
+        ...state,
+        [action.payload.email]: {
+          deletedStickies: (
+            state[action.payload.email].deletedStickies.filter((sticky) => sticky.id !== stickyId)
+          ),
+          stickies: [...state[action.payload.email].stickies, stickyToRestore],
         },
       };
       saveState(newState);
@@ -79,15 +95,6 @@ export const stickiesSlice = createSlice({
       ...state,
       deletedStickies: [],
     }),
-    restoreASticky: (state, action) => {
-      const stickyId = action.payload.id;
-      const stickyToRestore = state.deletedStickies.find((sticky) => sticky.id === stickyId);
-      return {
-        ...state,
-        deletedStickies: state.deletedStickies.filter((sticky) => sticky.id !== stickyId),
-        stickies: [...state.stickies, stickyToRestore],
-      };
-    },
   },
 });
 
