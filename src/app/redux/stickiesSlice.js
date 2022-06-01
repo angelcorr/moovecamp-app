@@ -39,12 +39,17 @@ export const stickiesSlice = createSlice({
     },
     removeSticky: (state, action) => {
       const stickyId = action.payload.id;
-      const stickyToDelete = state.stickies.find((sticky) => sticky.id === stickyId);
-      return {
+      const stickyToDelete = (
+        state[action.payload.email].stickies.find((sticky) => sticky.id === stickyId));
+      const newState = {
         ...state,
-        stickies: state.stickies.filter((sticky) => sticky.id !== stickyId),
-        deletedStickies: [...state.deletedStickies, stickyToDelete],
+        [action.payload.email]: {
+          stickies: state[action.payload.email].stickies.filter((sticky) => sticky.id !== stickyId),
+          deletedStickies: [...state[action.payload.email].deletedStickies, stickyToDelete],
+        },
       };
+      saveState(newState);
+      return newState;
     },
     changeTitle: (state, action) => ({
       ...state,
