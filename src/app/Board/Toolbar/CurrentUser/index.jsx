@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { selectUserLoggedIn } from '../../../redux/usersSlice';
 
 const CurrentUser = () => {
-  const currentUser = useSelector(selectUserLoggedIn);
-  return <div className="mx-2.5 flex items-center">{currentUser}</div>;
+  const { email } = useSelector(selectUserLoggedIn);
+  return <div className="mx-2.5 flex items-center">{email}</div>;
 };
 
 export default CurrentUser;
