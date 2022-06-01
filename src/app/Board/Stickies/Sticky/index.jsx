@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   changeColor,
@@ -11,6 +11,7 @@ import {
 } from '../../../redux/stickiesSlice';
 import Modal from '../../Modal';
 import SettingsModal from './SettingsModal';
+import { selectUserLoggedIn } from '../../../redux/usersSlice';
 
 const colors = {
   blue: 'bg-blue-300 border-blue-700',
@@ -29,6 +30,8 @@ const fontFamilyAvailable = {
 const Sticky = ({
   title, text, id, color, font, isInsideTrash,
 }) => {
+  const { email } = useSelector(selectUserLoggedIn);
+
   const dispatch = useDispatch();
 
   const colorsClassName = colors[color || 'yellow'];
@@ -39,20 +42,20 @@ const Sticky = ({
   const [selectFontFamily, setSelectFontFamily] = useState(font);
 
   const handleChangeSticky = () => {
-    dispatch(changeTextFont({ id, font: selectFontFamily }));
-    dispatch(changeColor({ id, color: backgroundColor }));
+    dispatch(changeTextFont({ id, font: selectFontFamily, email }));
+    dispatch(changeColor({ id, color: backgroundColor, email }));
 
     setModalVisible(false);
   };
 
   const handleText = ({ currentTarget }) => {
     const currentText = currentTarget.textContent;
-    dispatch(changeText({ id, text: currentText }));
+    dispatch(changeText({ id, text: currentText, email }));
   };
 
   const handleTitle = ({ currentTarget }) => {
     const currentText = currentTarget.textContent;
-    dispatch(changeTitle({ id, title: currentText }));
+    dispatch(changeTitle({ id, title: currentText, email }));
   };
 
   return (
@@ -72,7 +75,7 @@ const Sticky = ({
           </p>
           <div className="flex justify-between">
             {isInsideTrash ? (
-              <button type="button" onClick={() => dispatch(restoreASticky({ id }))}>
+              <button type="button" onClick={() => dispatch(restoreASticky({ id, email }))}>
                 ×
               </button>
             ) : (
@@ -80,7 +83,7 @@ const Sticky = ({
                 <button className="mr-1" type="button" onClick={() => setModalVisible(true)}>
                   •••
                 </button>
-                <button type="button" onClick={() => dispatch(removeSticky({ id }))}>
+                <button type="button" onClick={() => dispatch(removeSticky({ id, email }))}>
                   ×
                 </button>
               </>
