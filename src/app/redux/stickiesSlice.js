@@ -9,7 +9,7 @@ const userInitialState = {
 };
 
 const saveState = (state) => localStorage.setItem(name, JSON.stringify(state));
-const loadInitialState = () => JSON.parse(localStorage.getItem(name)) || initialState;
+const loadInitialState = () => JSON.parse(localStorage.getItem(name)) ?? initialState;
 
 // Top level state for Stickies
 export const stickiesSlice = createSlice({
@@ -17,7 +17,7 @@ export const stickiesSlice = createSlice({
   initialState: loadInitialState(),
   reducers: {
     addSticky: (state, action) => {
-      const userStickies = state[action.payload.email] || userInitialState;
+      const userStickies = state[action.payload.email] ?? userInitialState;
       const newSticky = {
         id: userStickies.stickies.length
         + userStickies.deletedStickies.length
@@ -36,65 +36,114 @@ export const stickiesSlice = createSlice({
       return newState;
     },
     removeSticky: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
       const stickyId = action.payload.id;
       const stickyToDelete = (
-        state[action.payload.email].stickies.find((sticky) => sticky.id === stickyId)
+        userStickies.stickies.find((sticky) => sticky.id === stickyId)
       );
+      const newUserStickies = userStickies.stickies.filter((sticky) => sticky.id !== stickyId);
+      const newUserDeletedStickies = [...userStickies.deletedStickies, stickyToDelete];
       const newState = {
         ...state,
         [action.payload.email]: {
-          stickies: state[action.payload.email].stickies.filter((sticky) => sticky.id !== stickyId),
-          deletedStickies: [...state[action.payload.email].deletedStickies, stickyToDelete],
+          stickies: newUserStickies,
+          deletedStickies: newUserDeletedStickies,
         },
       };
       saveState(newState);
       return newState;
     },
     restoreASticky: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
       const stickyId = action.payload.id;
-      const stickyToRestore = (
-        state[action.payload.email].deletedStickies.find((sticky) => sticky.id === stickyId)
+      const newUserDeletedStickies = (
+        userStickies.deletedStickies.filter((sticky) => sticky.id !== stickyId)
       );
+      const stickyToRestore = userStickies.deletedStickies.find((sticky) => sticky.id === stickyId);
       const newState = {
         ...state,
         [action.payload.email]: {
-          deletedStickies: (
-            state[action.payload.email].deletedStickies.filter((sticky) => sticky.id !== stickyId)
-          ),
-          stickies: [...state[action.payload.email].stickies, stickyToRestore],
+          deletedStickies: newUserDeletedStickies,
+          stickies: [...userStickies.stickies, stickyToRestore],
         },
       };
       saveState(newState);
       return newState;
     },
-    changeTitle: (state, action) => ({
-      ...state,
-      stickies: state.stickies.map((sticky) => (
-        sticky.id === action.payload.id ? { ...sticky, title: action.payload.title } : sticky
-      )),
-    }),
-    changeText: (state, action) => ({
-      ...state,
-      stickies: state.stickies.map((sticky) => (
-        sticky.id === action.payload.id ? { ...sticky, text: action.payload.text } : sticky
-      )),
-    }),
-    changeColor: (state, action) => ({
-      ...state,
-      stickies: state.stickies.map((sticky) => (
-        sticky.id === action.payload.id ? { ...sticky, color: action.payload.color } : sticky
-      )),
-    }),
-    changeTextFont: (state, action) => ({
-      ...state,
-      stickies: state.stickies.map((sticky) => (
-        sticky.id === action.payload.id ? { ...sticky, font: action.payload.font } : sticky
-      )),
-    }),
-    removeAllStickiesFromTrash: (state) => ({
-      ...state,
-      deletedStickies: [],
-    }),
+    changeTitle: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
+      const stickyId = action.payload.id;
+      const newUserStickies = userStickies.stickies.map((sticky) => (
+        sticky.id === stickyId ? { ...sticky, title: action.payload.title } : sticky
+      ));
+      const newState = {
+        ...state,
+        [action.payload.email]: {
+          ...state[action.payload.email],
+          stickies: newUserStickies,
+        },
+      };
+      saveState(newState);
+      return newState;
+    },
+    changeText: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
+      const stickyId = action.payload.id;
+      const newUserStickies = userStickies.stickies.map((sticky) => (
+        sticky.id === stickyId ? { ...sticky, text: action.payload.text } : sticky
+      ));
+      const newState = {
+        ...state,
+        [action.payload.email]: {
+          ...state[action.payload.email],
+          stickies: newUserStickies,
+        },
+      };
+      saveState(newState);
+      return newState;
+    },
+    changeColor: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
+      const stickyId = action.payload.id;
+      const newUserStickies = userStickies.stickies.map((sticky) => (
+        sticky.id === stickyId ? { ...sticky, color: action.payload.color } : sticky
+      ));
+      const newState = {
+        ...state,
+        [action.payload.email]: {
+          ...state[action.payload.email],
+          stickies: newUserStickies,
+        },
+      };
+      saveState(newState);
+      return newState;
+    },
+    changeTextFont: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
+      const stickyId = action.payload.id;
+      const newUserStickies = userStickies.stickies.map((sticky) => (
+        sticky.id === stickyId ? { ...sticky, font: action.payload.font } : sticky
+      ));
+      const newState = {
+        ...state,
+        [action.payload.email]: {
+          ...state[action.payload.email],
+          stickies: newUserStickies,
+        },
+      };
+      saveState(newState);
+      return newState;
+    },
+    removeAllStickiesFromTrash: (state, action) => {
+      const userStickies = state[action.payload.email] ?? userInitialState;
+      const newUserStickies = { ...userStickies, deletedStickies: [] };
+      const newState = {
+        ...state,
+        [action.payload.email]: newUserStickies,
+      };
+      saveState(newState);
+      return newState;
+    },
   },
 });
 
@@ -109,6 +158,12 @@ export const {
   changeTextFont,
 } = stickiesSlice.actions;
 
-export const selectStickies = (state) => state.stickies;
+export const selectStickies = (state) => (
+  (state.stickies[state.users.userLoggedIn.email] ?? userInitialState).stickies
+);
+
+export const selectDeletedStickies = (state) => (
+  (state.stickies[state.users.userLoggedIn.email] ?? userInitialState).deletedStickies
+);
 
 export default stickiesSlice.reducer;
