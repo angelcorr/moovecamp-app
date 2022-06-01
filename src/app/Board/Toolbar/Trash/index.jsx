@@ -1,25 +1,28 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeAllStickiesFromTrash, selectStickies } from '../../../redux/stickiesSlice';
+import { removeAllStickiesFromTrash, selectDeletedStickies } from '../../../redux/stickiesSlice';
+import { selectUserLoggedIn } from '../../../redux/usersSlice';
 import Modal from '../../Modal';
 import emptyTrash from './trash-can/trash-can-empty.png';
 import fullTrash from './trash-can/trash-can-full.png';
 import TrashModal from './TrashModal';
 
 const Trash = () => {
-  const currentState = useSelector(selectStickies);
+  const currentDeletedStickies = useSelector(selectDeletedStickies);
+  const { email } = useSelector(selectUserLoggedIn);
+
   const dispatch = useDispatch();
 
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleEmptyTrash = () => {
+    dispatch(removeAllStickiesFromTrash({ email }));
     setModalVisible(false);
-    dispatch(removeAllStickiesFromTrash());
   };
 
   return (
     <>
-      {currentState.deletedStickies.length > 0 ? (
+      {currentDeletedStickies.length > 0 ? (
         <button className="mx-2.5" type="button" onClick={() => setModalVisible(true)}>
           <img className="h-14" src={fullTrash} alt="Trash can full" />
         </button>
