@@ -1,25 +1,41 @@
+/* eslint-disable no-undef */
 import { createSlice } from '@reduxjs/toolkit';
+
+const name = 'stickies';
+const initialState = {};
+const userInitialState = {
+  stickies: [],
+  deletedStickies: [],
+};
+
+const saveState = (state) => localStorage.setItem(name, JSON.stringify(state));
+const loadInitialState = () => JSON.parse(localStorage.getItem(name)) || initialState;
 
 // Top level state for Stickies
 export const stickiesSlice = createSlice({
-  name: 'stickies',
-  initialState: {
-    stickies: [],
-    deletedStickies: [],
-  },
+  name,
+  initialState: loadInitialState(),
   reducers: {
     addSticky: (state, action) => {
+      console.log('state', state);
+      const userStickies = state[action.payload.email] || userInitialState;
+      console.log('state[action.payload.email]', userStickies);
       const newSticky = {
-        id: state.stickies.length + state.deletedStickies.length + 1,
+        id: userStickies.stickies.length
+        + userStickies.deletedStickies.length
+        + 1,
         title: action.payload.title,
         text: action.payload.text,
         color: action.payload.color,
         font: action.payload.font,
       };
-      return {
+      const newUserStickies = { ...userStickies, stickies: [...userStickies.stickies, newSticky] };
+      const newState = {
         ...state,
-        stickies: [...state.stickies, newSticky],
+        [action.payload.email]: newUserStickies,
       };
+      saveState(newState);
+      return newState;
     },
     removeSticky: (state, action) => {
       const stickyId = action.payload.id;
