@@ -1,11 +1,13 @@
 import { React, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addSticky } from '../../../redux/stickiesSlice';
+import { selectUserLoggedIn } from '../../../redux/usersSlice';
 import Modal from '../../Modal';
 import AddStickyModal from './AddStickyModal';
 
 const AddSticky = () => {
   const dispatch = useDispatch();
+  const { email } = useSelector(selectUserLoggedIn);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
@@ -21,6 +23,7 @@ const AddSticky = () => {
         text,
         color,
         font,
+        email,
       }),
     );
     setModalVisible(false);
