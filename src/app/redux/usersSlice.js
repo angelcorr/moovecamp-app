@@ -5,7 +5,7 @@ const name = 'users';
 
 const saveState = (state) => localStorage.setItem(name, JSON.stringify(state));
 const loadInitialState = () => (
-  JSON.parse(localStorage.getItem(name)) || { users: [], userLoggedIn: null }
+  JSON.parse(localStorage.getItem(name)) ?? { users: [], userLoggedIn: null }
 );
 
 export const usersSlice = createSlice({
@@ -20,7 +20,7 @@ export const usersSlice = createSlice({
     },
     logIn: (state, action) => {
       const newUserLoggedIn = action.payload;
-      const newState = { ...state, userLoggedIn: newUserLoggedIn.email };
+      const newState = { ...state, userLoggedIn: newUserLoggedIn };
       saveState(newState);
       return newState;
     },
