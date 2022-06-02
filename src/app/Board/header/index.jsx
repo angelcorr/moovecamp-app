@@ -8,11 +8,15 @@ const Header = () => {
 
   return (
     <header className="p-2 flex justify-evenly border border-b-zinc-500 border-b-2">
-      <div className="flex items-center">
-        {email}
-      </div>
+      <div className="flex items-center">{email}</div>
       <div>
-        <button className="p-2 border border-zinc-500 rounded-lg transition ease-in-out delay-150 hover:scale-125 duration-300" type="button" onClick={() => dispatch(signOut())}>Sign out</button>
+        <button
+          className="p-2 border border-zinc-500 rounded-lg transition ease-in-out delay-150 hover:scale-125 duration-300"
+          type="button"
+          onClick={() => dispatch(signOut())}
+        >
+          Sign out
+        </button>
       </div>
     </header>
   );
