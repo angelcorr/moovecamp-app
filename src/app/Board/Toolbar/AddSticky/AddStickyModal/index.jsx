@@ -62,7 +62,7 @@ const AddStickyModal = ({
       <div>
         <button
           type="button"
-          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-white bg-orange-600 border border-orange-600 rounded-lg"
+          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans"
           value="sansSerif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -70,7 +70,7 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-white bg-blue-700 border border-blue-700 rounded-lg"
+          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg"
           value="serif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -78,7 +78,7 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="p-1 md:p-2 text-sm text-white bg-purple-700 border border-purple-700 rounded-lg"
+          className="p-1 md:p-2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg"
           value="monospace"
           onClick={(event) => setFont(event.target.value)}
         >
