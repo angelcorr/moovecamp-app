@@ -46,7 +46,7 @@ const SettingsModal = ({ setBackgroundCColor, setSelectFontFamily, handleChangeS
         value="sansSerif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
-        Default
+        Current font
       </button>
       <button
         type="button"
