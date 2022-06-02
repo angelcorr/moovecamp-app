@@ -65,7 +65,7 @@ const Sticky = ({
           className={`flex justify-between p-2 border border-b-2 rounded-t-md ${colorsClassName}`}
         >
           <p
-            className="w-auto"
+            className={`w-auto ${fontClassName}`}
             id={id}
             contentEditable="true"
             suppressContentEditableWarning="true"
