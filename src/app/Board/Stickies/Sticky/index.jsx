@@ -54,8 +54,8 @@ const Sticky = ({
   };
 
   const handleTitle = ({ currentTarget }) => {
-    const currentText = currentTarget.textContent;
-    dispatch(changeTitle({ id, title: currentText, email }));
+    const currentTitle = currentTarget.textContent;
+    dispatch(changeTitle({ id, title: currentTitle, email }));
   };
 
   return (
