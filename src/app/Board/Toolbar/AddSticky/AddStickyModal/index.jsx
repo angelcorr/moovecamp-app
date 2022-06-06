@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AddStickyModal = ({
-  title, setTitle, text, setText, setColor, setFont, handleSubmit,
+  title, setTitle, text, setText, color, setColor, font, setFont, handleSubmit,
 }) => (
   <form
     className="h-5/6 flex flex-col justify-around items-center"
@@ -25,7 +25,9 @@ const AddStickyModal = ({
       <div>
         <button
           type="button"
-          className="mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-orange-600 border border-orange-600 rounded-lg"
+          className={color === 'orange'
+            ? 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-orange-600 shadow-lg shadow-orange-600/50 border border-orange-600 rounded-lg scale-110'
+            : 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-orange-600 border border-orange-600 rounded-lg'}
           value="orange"
           onClick={(event) => setColor(event.target.value)}
         >
@@ -33,7 +35,9 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-blue-700 border border-blue-700 rounded-lg"
+          className={color === 'blue'
+            ? 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-blue-700 shadow-lg shadow-blue-700/50 border border-blue-700 rounded-lg scale-110'
+            : 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-blue-700 border border-blue-700 rounded-lg'}
           value="blue"
           onClick={(event) => setColor(event.target.value)}
         >
@@ -41,7 +45,9 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-purple-700 border border-purple-700 rounded-lg"
+          className={color === 'purple'
+            ? 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-purple-700 shadow-lg shadow-purple-700/50 border border-purple-700 rounded-lg scale-110'
+            : 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-purple-700 border border-purple-700 rounded-lg'}
           value="purple"
           onClick={(event) => setColor(event.target.value)}
         >
@@ -49,7 +55,9 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="p-1 md:p-2 text-sm text-white bg-green-700 border border-green-700 rounded-lg"
+          className={color === 'green'
+            ? 'p-1 md:p-2 text-sm text-white bg-green-700 shadow-lg shadow-green-700/50 border border-green-700 rounded-lg scale-110'
+            : 'p-1 md:p-2 text-sm text-white bg-green-700 border border-green-700 rounded-lg'}
           value="green"
           onClick={(event) => setColor(event.target.value)}
         >
@@ -62,7 +70,9 @@ const AddStickyModal = ({
       <div>
         <button
           type="button"
-          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans"
+          className={font === 'sansSerif'
+            ? 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-white bg-black border border-black rounded-lg font-sans scale-110'
+            : 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans'}
           value="sansSerif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -70,7 +80,9 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg"
+          className={font === 'serif'
+            ? 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-white bg-black border border-black rounded-lg font-serif scale-110'
+            : 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-serif'}
           value="serif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -78,7 +90,9 @@ const AddStickyModal = ({
         </button>
         <button
           type="button"
-          className="p-1 md:p-2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg"
+          className={font === 'monospace'
+            ? 'p-1 md:p-2 text-sm text-sm text-white bg-black border border-black rounded-lg font-mono scale-110'
+            : 'p-1 md:p-2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-mono'}
           value="monospace"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -100,7 +114,9 @@ AddStickyModal.propTypes = {
   setTitle: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   setText: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
   setColor: PropTypes.func.isRequired,
+  font: PropTypes.string.isRequired,
   setFont: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
