@@ -105,6 +105,8 @@ const Sticky = ({
           setBackgroundCColor={setBackgroundCColor}
           setSelectFontFamily={setSelectFontFamily}
           handleChangeSticky={handleChangeSticky}
+          selectFontFamily={selectFontFamily}
+          backgroundColor={backgroundColor}
         />
       </Modal>
     </>
