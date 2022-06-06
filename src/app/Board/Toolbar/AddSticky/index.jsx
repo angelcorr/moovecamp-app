@@ -49,7 +49,9 @@ const AddSticky = () => {
           setTitle={setTitle}
           text={text}
           setText={setText}
+          color={color}
           setColor={setColor}
+          font={font}
           setFont={setFont}
           handleSubmit={handleSubmit}
         />
