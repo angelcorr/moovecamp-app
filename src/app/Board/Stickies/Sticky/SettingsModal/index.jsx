@@ -78,7 +78,7 @@ const SettingsModal = ({
         value="monospace"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
-        A bit bold
+        Monospace
       </button>
     </div>
     <button
