@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+
+  /*
+    Modal buttons to set the sticky's background color.
+  */
+
   .modal-button-yellow {
     @apply mt-3.5 mr-7 p-2 text-sm text-black bg-yellow-300 border border-yellow-300 rounded-lg;
   }
@@ -22,4 +27,21 @@
   .modal-button-green {
     @apply p-1 md:p-2 text-sm text-white bg-green-700 border border-green-700 rounded-lg;
   }
+
+  /*
+    Modal buttons to set the sticky's font family.
+  */
+
+  .modal-button-selected {
+    @apply mr-1.5 mb-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-black border border-black rounded-lg scale-110;
+  }
+
+  .modal-button-not-selected {
+    @apply mr-1.5 mb-1.5 md:mr-7 p-1 md:p-2 text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg;
+  }
+
+  .save-modal-button {
+    @apply w-3/12 md:w-1/6 h-8 text-sm text-white bg-green-600 border border-green-600 rounded-md hover:scale-125
+  }
+
 }
