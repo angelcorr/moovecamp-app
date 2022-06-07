@@ -9,13 +9,13 @@ const AddStickyModal = ({
     onSubmit={(event) => handleSubmit(event)}
   >
     <input
-      className="w-11/12 md:w-9/12 h-9 p-2 placeholder:text-black/25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
+      className="inputs h-9"
       placeholder="Add a title"
       value={title}
       onChange={(event) => setTitle(event.target.value)}
     />
     <textarea
-      className="w-11/12 h-12 md:w-9/12 md:h-24 p-2 placeholder:text-black/25 bg-yellow-300 border border-2 border-yellow-700 rounded-md"
+      className="inputs h-12 md:h-24"
       placeholder="Add a text"
       value={text}
       onChange={(event) => setText(event.target.value)}
