@@ -70,4 +70,8 @@
   .close-modal {
     @apply w-4/12 p-2 text-sm border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300;
   }
+
+  .transitions {
+    @apply transition ease-in-out delay-150 hover:scale-125 duration-300;
+  }
 }
