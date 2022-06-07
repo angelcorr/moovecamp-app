@@ -9,7 +9,7 @@ const Modal = ({
     <div className="w-full h-full">
       <div className="p-3 flex justify-between border border-b-zinc-400">
         <h2 className="ml-14">{title}</h2>
-        <button type="button" className="close-modal" onClick={() => setVisible(false)}>
+        <button type="button" onClick={() => setVisible(false)}>
           ×
         </button>
       </div>
