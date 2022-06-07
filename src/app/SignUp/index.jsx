@@ -41,33 +41,33 @@ const SignUp = () => {
     <section className="bg-sticky-background-login bg-cover bg-center">
       <div className="h-screen flex justify-center items-center">
         <form
-          className="w-64 md:w-80 lg:w-96 h-96 flex flex-col justify-evenly items-center border border-purple-800 rounded-md"
+          className="log-sign-in-form"
           onSubmit={(event) => handleSubmit(event)}
         >
           <p className="text-2xl">Sign Up</p>
           <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
+            className="log-sign-in-inputs"
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email"
           />
           <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
+            className="log-sign-in-inputs"
             type="email"
             value={emailConfirmation}
             onChange={(event) => setEmailConfirmation(event.target.value)}
             placeholder="Confirm your email"
           />
           <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
+            className="log-sign-in-inputs"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Password"
           />
           <input
-            className="w-48 md:w-64 lg:w-80 p-2.5 border border-purple-800 rounded-md"
+            className="log-sign-in-inputs"
             type="password"
             value={passwordConfirmation}
             onChange={(event) => setPasswordConfirmation(event.target.value)}
