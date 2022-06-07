@@ -38,7 +38,7 @@ const Sticky = ({
   const fontClassName = fontFamilyAvailable[font || 'sans-serif'];
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [backgroundColor, setBackgroundCColor] = useState(color);
+  const [backgroundColor, setBackgroundColor] = useState(color);
   const [selectFontFamily, setSelectFontFamily] = useState(font);
 
   const handleChangeSticky = () => {
@@ -102,7 +102,7 @@ const Sticky = ({
       </div>
       <Modal title="Sticky's settings" visible={modalVisible} setVisible={setModalVisible}>
         <SettingsModal
-          setBackgroundCColor={setBackgroundCColor}
+          setBackgroundColor={setBackgroundColor}
           setSelectFontFamily={setSelectFontFamily}
           handleChangeSticky={handleChangeSticky}
           selectFontFamily={selectFontFamily}
