@@ -2,18 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SettingsModal = ({
-  setBackgroundCColor, setSelectFontFamily, handleChangeSticky, selectFontFamily, backgroundColor,
+  setBackgroundColor, setSelectFontFamily, handleChangeSticky, selectFontFamily, backgroundColor,
 }) => (
   <div className="h-5/6 flex flex-col justify-evenly items-center">
     <p>Change sticky`s background color</p>
     <div>
       <button
         type="button"
+        className={backgroundColor === 'yellow'
+          ? 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 shadow-lg shadow-yellow-300/50 border border-yellow-300 rounded-lg scale-110'
+          : 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 border border-yellow-300 rounded-lg'}
+        value="yellow"
+        onClick={(event) => setBackgroundColor(event.target.value)}
+      >
+        Yellow
+      </button>
+      <button
+        type="button"
         className={backgroundColor === 'orange'
           ? 'mt-3.5 mr-7 p-2 text-white bg-orange-600 shadow-lg shadow-orange-600/50 border border-orange-600 rounded-lg scale-110'
           : 'mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg'}
         value="orange"
-        onClick={(event) => setBackgroundCColor(event.target.value)}
+        onClick={(event) => setBackgroundColor(event.target.value)}
       >
         Orange
       </button>
@@ -23,7 +33,7 @@ const SettingsModal = ({
           ? 'mt-3.5 mr-7 p-2 text-white bg-blue-700 shadow-lg shadow-blue-700/50 border border-blue-700 rounded-lg scale-110'
           : 'mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg'}
         value="blue"
-        onClick={(event) => setBackgroundCColor(event.target.value)}
+        onClick={(event) => setBackgroundColor(event.target.value)}
       >
         Blue
       </button>
@@ -33,7 +43,7 @@ const SettingsModal = ({
           ? 'mt-3.5 mr-7 p-2 text-white bg-purple-700 shadow-lg shadow-purple-700/50 border border-purple-700 rounded-lg scale-110'
           : 'mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg'}
         value="purple"
-        onClick={(event) => setBackgroundCColor(event.target.value)}
+        onClick={(event) => setBackgroundColor(event.target.value)}
       >
         Purple
       </button>
@@ -43,7 +53,7 @@ const SettingsModal = ({
           ? 'mt-3.5 mr-7 p-2 text-white bg-green-700 shadow-lg shadow-green-700/50 border border-green-700 rounded-lg scale-110'
           : 'mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg'}
         value="green"
-        onClick={(event) => setBackgroundCColor(event.target.value)}
+        onClick={(event) => setBackgroundColor(event.target.value)}
       >
         Green
       </button>
@@ -93,7 +103,7 @@ const SettingsModal = ({
 
 SettingsModal.propTypes = {
   setSelectFontFamily: PropTypes.func.isRequired,
-  setBackgroundCColor: PropTypes.func.isRequired,
+  setBackgroundColor: PropTypes.func.isRequired,
   handleChangeSticky: PropTypes.func.isRequired,
   selectFontFamily: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
