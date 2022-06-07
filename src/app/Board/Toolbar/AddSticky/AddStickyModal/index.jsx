@@ -77,12 +77,12 @@ const AddStickyModal = ({
     </div>
     <div className="flex flex-col items-center">
       Chose a text type
-      <div>
+      <div className="mt-3.5">
         <button
           type="button"
           className={font === 'sansSerif'
-            ? 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-white bg-black border border-black rounded-lg font-sans scale-110'
-            : 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans'}
+            ? 'modal-button-selected font-sans'
+            : 'modal-button-not-selected font-sans'}
           value="sansSerif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -91,8 +91,8 @@ const AddStickyModal = ({
         <button
           type="button"
           className={font === 'serif'
-            ? 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-white bg-black border border-black rounded-lg font-serif scale-110'
-            : 'mr-1.5 mb-1.5 md:mr-7 p-1 md:p2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-serif'}
+            ? 'modal-button-selected font-serif'
+            : 'modal-button-not-selected font-serif'}
           value="serif"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -101,8 +101,8 @@ const AddStickyModal = ({
         <button
           type="button"
           className={font === 'monospace'
-            ? 'p-1 md:p-2 text-sm text-sm text-white bg-black border border-black rounded-lg font-mono scale-110'
-            : 'p-1 md:p-2 text-sm text-sm text-black bg-zinc-300 border border-zinc-500 rounded-lg font-mono'}
+            ? 'modal-button-selected font-mono'
+            : 'modal-button-not-selected font-mono'}
           value="monospace"
           onClick={(event) => setFont(event.target.value)}
         >
@@ -112,7 +112,7 @@ const AddStickyModal = ({
     </div>
     <button
       type="submit"
-      className="w-3/12 md:w-1/6 h-8 text-sm text-white bg-green-600 border border-green-600 rounded-md"
+      className="save-modal-button"
     >
       Create
     </button>

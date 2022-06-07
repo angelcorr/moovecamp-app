@@ -63,8 +63,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={selectFontFamily === 'sansSerif'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-black border border-black rounded-lg font-sans scale-110'
-          : 'mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-sans'}
+          ? 'modal-button-selected font-sans'
+          : 'modal-button-not-selected font-sans'}
         value="sansSerif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
@@ -73,8 +73,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={selectFontFamily === 'serif'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-black border border-black rounded-lg font-serif scale-110'
-          : 'mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-serif'}
+          ? 'modal-button-selected font-sans'
+          : 'modal-button-not-selected font-sans'}
         value="serif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
@@ -83,8 +83,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={selectFontFamily === 'monospace'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-black border border-black rounded-lg font-mono scale-110'
-          : 'mt-3.5 mr-7 p-2 text-black bg-zinc-300 border border-zinc-500 rounded-lg font-mono'}
+          ? 'modal-button-selected font-sans'
+          : 'modal-button-not-selected font-sans'}
         value="monospace"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
@@ -93,7 +93,7 @@ const SettingsModal = ({
     </div>
     <button
       type="button"
-      className="w-1/6 h-8 text-white bg-green-600 border border-green-600 rounded-md transition ease-in-out delay-150 hover:scale-125 duration-300"
+      className="save-modal-button"
       onClick={() => handleChangeSticky()}
     >
       Save
