@@ -11,7 +11,7 @@ const Header = () => {
       <div className="flex items-center">{email}</div>
       <div>
         <button
-          className="p-2 border border-zinc-500 rounded-lg transition ease-in-out delay-150 hover:scale-125 duration-300"
+          className="p-2 border border-zinc-500 rounded-lg transitions"
           type="button"
           onClick={() => dispatch(signOut())}
         >
