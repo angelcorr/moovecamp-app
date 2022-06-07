@@ -10,8 +10,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={backgroundColor === 'yellow'
-          ? 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 shadow-lg shadow-yellow-300/50 border border-yellow-300 rounded-lg scale-110'
-          : 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 border border-yellow-300 rounded-lg'}
+          ? 'modal-button-yellow shadow-lg shadow-yellow-300/50 scale-110'
+          : 'modal-button-yellow'}
         value="yellow"
         onClick={(event) => setBackgroundColor(event.target.value)}
       >
@@ -20,8 +20,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={backgroundColor === 'orange'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-orange-600 shadow-lg shadow-orange-600/50 border border-orange-600 rounded-lg scale-110'
-          : 'mt-3.5 mr-7 p-2 text-white bg-orange-600 border border-orange-600 rounded-lg'}
+          ? 'modal-button-orange shadow-lg shadow-orange-600/50 scale-110'
+          : 'modal-button-orange'}
         value="orange"
         onClick={(event) => setBackgroundColor(event.target.value)}
       >
@@ -30,8 +30,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={backgroundColor === 'blue'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-blue-700 shadow-lg shadow-blue-700/50 border border-blue-700 rounded-lg scale-110'
-          : 'mt-3.5 mr-7 p-2 text-white bg-blue-700 border border-blue-700 rounded-lg'}
+          ? 'modal-button-blue shadow-lg shadow-blue-700/50 scale-110'
+          : 'modal-button-blue'}
         value="blue"
         onClick={(event) => setBackgroundColor(event.target.value)}
       >
@@ -40,8 +40,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={backgroundColor === 'purple'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-purple-700 shadow-lg shadow-purple-700/50 border border-purple-700 rounded-lg scale-110'
-          : 'mt-3.5 mr-7 p-2 text-white bg-purple-700 border border-purple-700 rounded-lg'}
+          ? 'modal-button-purple shadow-lg shadow-purple-700/50 scale-110'
+          : 'modal-button-purple'}
         value="purple"
         onClick={(event) => setBackgroundColor(event.target.value)}
       >
@@ -50,8 +50,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={backgroundColor === 'green'
-          ? 'mt-3.5 mr-7 p-2 text-white bg-green-700 shadow-lg shadow-green-700/50 border border-green-700 rounded-lg scale-110'
-          : 'mt-3.5 p-2 text-white bg-green-700 border border-green-700 rounded-lg'}
+          ? 'modal-button-green shadow-lg shadow-green-700/50 scale-110'
+          : 'modal-button-green'}
         value="green"
         onClick={(event) => setBackgroundColor(event.target.value)}
       >
