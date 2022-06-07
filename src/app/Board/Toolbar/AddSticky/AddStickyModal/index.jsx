@@ -25,6 +25,16 @@ const AddStickyModal = ({
       <div>
         <button
           type="button"
+          className={color === 'yellow'
+            ? 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 shadow-lg shadow-yellow-300/50 border border-yellow-300 rounded-lg scale-110'
+            : 'mt-3.5 mr-7 p-2 text-black bg-yellow-300 border border-yellow-300 rounded-lg'}
+          value="yellow"
+          onClick={(event) => setColor(event.target.value)}
+        >
+          Yellow
+        </button>
+        <button
+          type="button"
           className={color === 'orange'
             ? 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-orange-600 shadow-lg shadow-orange-600/50 border border-orange-600 rounded-lg scale-110'
             : 'mr-1.5 md:mr-7 p-1 md:p-2 text-sm text-white bg-orange-600 border border-orange-600 rounded-lg'}
