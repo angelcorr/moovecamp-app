@@ -29,7 +29,7 @@ const TrashModal = ({ handleTrash, setVisible }) => {
       <footer className="sticky my-2 flex justify-evenly">
         <button
           type="button"
-          className="w-4/12 p-2 text-sm border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
+          className="close-modal"
           onClick={() => setVisible(false)}
         >
           Cancel
@@ -37,7 +37,7 @@ const TrashModal = ({ handleTrash, setVisible }) => {
         {currentDeletedStickies.length > 0 && (
           <button
             type="button"
-            className="w-4/12 p-2 text-sm border border-red-600 bg-red-600 text-zinc-50 rounded-md transition ease-in-out delay-150 hover:scale-110 duration-300"
+            className="close-modal"
             onClick={() => handleTrash()}
           >
             Empty Trash
