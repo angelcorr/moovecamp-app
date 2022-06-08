@@ -73,8 +73,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={selectFontFamily === 'serif'
-          ? 'modal-button-selected font-sans'
-          : 'modal-button-not-selected font-sans'}
+          ? 'modal-button-selected font-serif'
+          : 'modal-button-not-selected font-serif'}
         value="serif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
@@ -83,8 +83,8 @@ const SettingsModal = ({
       <button
         type="button"
         className={selectFontFamily === 'monospace'
-          ? 'modal-button-selected font-sans'
-          : 'modal-button-not-selected font-sans'}
+          ? 'modal-button-selected font-mono'
+          : 'modal-button-not-selected font-mono'}
         value="monospace"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
