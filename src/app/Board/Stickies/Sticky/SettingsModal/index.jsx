@@ -68,7 +68,7 @@ const SettingsModal = ({
         value="sansSerif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
-        Current font
+        Sans Serif
       </button>
       <button
         type="button"
@@ -78,7 +78,7 @@ const SettingsModal = ({
         value="serif"
         onClick={(event) => setSelectFontFamily(event.target.value)}
       >
-        Times New Roman
+        Serif
       </button>
       <button
         type="button"

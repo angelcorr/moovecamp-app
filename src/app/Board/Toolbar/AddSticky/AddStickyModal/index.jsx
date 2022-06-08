@@ -86,7 +86,7 @@ const AddStickyModal = ({
           value="sansSerif"
           onClick={(event) => setFont(event.target.value)}
         >
-          Current font
+          Sans Serif
         </button>
         <button
           type="button"
@@ -96,7 +96,7 @@ const AddStickyModal = ({
           value="serif"
           onClick={(event) => setFont(event.target.value)}
         >
-          Times New Roman
+          Serif
         </button>
         <button
           type="button"
